@@ -97,7 +97,7 @@ void DISPLAY_Initialize(void)
 void SPI_SendCommand(ST7735S_Command_t param_1)
 {
   uint32_t uVar1;
-  
+  printf("SPI_SendCommand %d\n", param_1);
   gpio_bit_reset(GPIOB,0b00000100);
   gpio_bit_reset(GPIOB,0b0000010000000000);
   do {
@@ -116,8 +116,8 @@ void SPI_SendCommand(ST7735S_Command_t param_1)
 
 void SPI_SendByte(uint8_t data)
 {
-	 uint32_t uVar1;
-  
+	uint32_t uVar1;
+  printf("SPI_SendByte %d\n", data);
   gpio_bit_reset(GPIOB,0b00000100);
   gpio_bit_set(GPIOB,0b0000010000000000);
   do {
