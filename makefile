@@ -1,7 +1,7 @@
 PORT=/dev/ttyUSB0
-DEVICE=GD32F350
+DEVICE=GD32F330
 
-CFLAGS=-mthumb -mcpu=cortex-m4 -mfloat-abi=soft -fno-builtin -fno-strict-aliasing -fdata-sections -fms-extensions -ffunction-sections -Os -Ilib/inc -D$(DEVICE)
+CFLAGS=-mthumb -mcpu=cortex-m4 -mfloat-abi=soft -fno-builtin -fno-strict-aliasing -fdata-sections -fms-extensions -ffunction-sections -Os -Ilib/inc -D$(DEVICE) -DPRINTF_DISABLE_SUPPORT_FLOAT -DPRINTF_DISABLE_SUPPORT_EXPONENTIAL -DPRINTF_DISABLE_SUPPORT_LONG_LONG
 LDFLAGS=-mthumb -mcpu=cortex-m4 -mfloat-abi=soft -Wl,--gc-sections -flto -specs=nano.specs -T lib/gd32f3x0.ld
 
 CC=arm-none-eabi-gcc
@@ -13,14 +13,20 @@ MT=miniterm
 
 SRCS=$(wildcard *.c)
 LIBS=$(wildcard lib/src/*.c)
+LIBS+=lib/printf/printf.c
 
 SRCOBJS=$(patsubst %.c, %.o, $(SRCS))
 LIBOBJS=$(patsubst lib/src/%.c, lib/%.o, $(LIBS))
+LIBOBJS+=lib/printf/printf.o
 
 app: $(SRCOBJS)
 	$(LD) $(LDFLAGS) $^ -lc -lm lib/driver.a -o output.elf
 	$(OC) -O binary output.elf output.bin
-	@rm -rf *.o *.elf
+	# Show size
+	@arm-none-eabi-size output.elf
+	# Encode the binary file to kdhx
+	~/kdhx_decrypt/encrypt output.bin firmware.kdhx
+#	@rm -rf *.o *.elf
 
 flash: app
 	$(FL) -p $(PORT) -s -e -w output.bin
@@ -37,7 +43,7 @@ clean:
 	@rm -rf *.o *.elf *.hex *.bin
 
 purge:
-	@rm -rf lib/*.o lib/*.a *.o *.elf *.hex *.bin
+	@rm -rf lib/*.o lib/*.a *.o *.elf *.hex *.bin lib/printf/*.o
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@

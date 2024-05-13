@@ -1,0 +1,6 @@
+[submodule "printf"]
+	path = printf
+	url = git@github.com:mpaland/printf.git
+[submodule "lib/printf"]
+	path = lib/printf
+	url = git@github.com:mpaland/printf.git
