@@ -1,0 +1,12 @@
+{
+    "C_Cpp.workspaceParsingPriority": "low",
+    "files.associations": {
+        "pins.h": "c",
+        "gd32f3x0.h": "c",
+        "st7735s.h": "c",
+        "gd32f3x0_timer.h": "c",
+        "gd32f3x0_spi.h": "c",
+        "cstddef": "c",
+        "printf.h": "c"
+    }
+}

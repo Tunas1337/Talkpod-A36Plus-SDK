@@ -3,11 +3,14 @@
 #include "gd32f3x0.h"
 #include "gd32f3x0_fmc.h"
 #include "gd32f3x0_spi.h"
+#include "st7735s.h"
 #include "stdbool.h"
-#include "display.h"
+//#include "display.h"
 #include "delay.h"
 
 void write_to_flash(uint32_t address, uint32_t data) {
+    // NOTE: Did not work for me - Tunas1337
+    
     // Unlock the Flash Program Erase controller
     fmc_unlock();
 
@@ -117,31 +120,16 @@ int main(void)
     SystemInit();
 
     // /* enable the systick */
-    // SysTick_Config(SystemCoreClock / 10000);
+    SysTick_Config(SystemCoreClock / 10000);
     // NVIC_SetPriority(SysTick_IRQn, 0x00);
 
     //printf("Hello, World!\r\n");
-
-    /* initialize the com */
-    com_usart_init();    
-
-    //spi_enable(SPI1);
-    printf("ping\r\n");
-    delayms(1000);
-    printf("pong\r\n");
-    // Turn on GPIOB7 (backlight)
-    gpio_mode_set(GPIOB, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GPIO_PIN_7);
-    gpio_bit_set(GPIOB, GPIO_PIN_7);
-    // Initialize the display
-    printf("Initializing pisplay\r\n");
-    DISPLAY_Initialize();
-    printf("Display initialized\r\n");
-    printf("Filling display with color\r\n");
-    DISPLAY_FillColor(0xF302);
-    printf("Display filled with color\r\n");
-    printf("Drawing a pixel at 10,10\r\n");
-    // Draw a rectangle, 20x20 pixels at 50,50
-    DISPLAY_DrawRectangle(50, 50, 70, 70, 0x0F00);
+    gpio_config();
+    
+    ST7735S_Init();
+    ST7735S_SetColor(0, 0, 0);
+    ST7735S_SetPixelFormat(COLOR_FORMAT_RGB666);
+    ST7735S_Fill_Rect(0, 0, 160, 128);
 
     while (true) {
     }

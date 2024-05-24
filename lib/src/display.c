@@ -2,19 +2,20 @@
 #include "gd32f3x0_gpio.h"
 #include "delay.h"
 #include "display.h"
+#include "../printf/printf.h"
 
 typedef uint8_t byte;
 
 void DISPLAY_Initialize(void)
 {
-  gpio_bit_set(GPIOB,0b0001000000000000);
-  delayms(1);
-  gpio_bit_reset(GPIOB,0b0001000000000000);
-  delayms(1);
-  gpio_bit_set(GPIOB,0b0001000000000000);
-  delayms(120);
+  gpio_bit_set(GPIOB,GPIO_PIN_12);
+  delay_1ms(1);
+  gpio_bit_reset(GPIOB,GPIO_PIN_12);
+  delay_1ms(1);
+  gpio_bit_set(GPIOB,GPIO_PIN_12);
+  delay_1ms(120);
   SPI_SendCommand(ST7735S_CMD_SLPOUT);
-  delayms(0x78);
+  delay_1ms(0x78);
   SPI_SendCommand(ST7735S_CMD_FRMCTR1);
   SPI_SendByte(5);
   SPI_SendByte(0x3a);
@@ -89,26 +90,46 @@ void DISPLAY_Initialize(void)
   SPI_SendByte(0xa8);
   SPI_SendCommand(ST7735S_CMD_COLMOD);
   SPI_SendByte(5);
-  DISPLAY_FillColor(0);
+  //DISPLAY_FillColor(0);
   SPI_SendCommand(ST7735S_CMD_DISPON);
   return;
 }
 
+uint32_t check_spi_status_reg(uint32_t *param_1,uint32_t param_2)
+
+{
+  uint32_t uVar1;
+  
+  uVar1 = param_1[2] & param_2;
+  if (uVar1 != 0) {
+    uVar1 = 1;
+  }
+  return uVar1;
+}
+
+void set_spi_data_register(uint32_t *param_1,uint32_t param_2)
+
+{
+  param_1[3] = param_2;
+  return;
+}
+
+
 void SPI_SendCommand(ST7735S_Command_t param_1)
 {
   uint32_t uVar1;
-  printf("SPI_SendCommand %d\n", param_1);
+  printf("SPI_SendCommand %x\r\ncheese\r\n", param_1);
   gpio_bit_reset(GPIOB,0b00000100);
   gpio_bit_reset(GPIOB,0b0000010000000000);
   do {
                     /* check if transmit buffer empty */
-	uVar1 = SPI_STAT(SPI1) & 0x2;
+	uVar1 = check_spi_status_reg(SPI1, 0x2);
   } while (uVar1 == 0);
   // Set SPI data register
-  SPI_DATA(SPI1) = param_1;
+  set_spi_data_register(SPI1, param_1);
   do {
 	// Check if SPI status register is empty
-	uVar1 = SPI_STAT(SPI1) & 0x2;
+	uVar1 = check_spi_status_reg(SPI1, 0x2);
   } while (uVar1 == 0);
   gpio_bit_set(GPIOB,4);
   return;
@@ -117,18 +138,18 @@ void SPI_SendCommand(ST7735S_Command_t param_1)
 void SPI_SendByte(uint8_t data)
 {
 	uint32_t uVar1;
-  printf("SPI_SendByte %d\n", data);
+  printf("SPI_SendByte %x\r\ncheese\r\n", data);
   gpio_bit_reset(GPIOB,0b00000100);
   gpio_bit_set(GPIOB,0b0000010000000000);
   do {
                     /* check if transmit buffer empty */
-	uVar1 = SPI_STAT(SPI1) & 0x2;
+	uVar1 = check_spi_status_reg(SPI1, 0x2);
   } while (uVar1 == 0);
   // Set SPI data register
-  SPI_DATA(SPI1) = data;
+  set_spi_data_register(SPI1, data);
   do {
 	// Check if SPI status register is empty
-	uVar1 = SPI_STAT(SPI1) & 0x2;
+	uVar1 = check_spi_status_reg(SPI1, 0x2);
   } while (uVar1 == 0);
   gpio_bit_set(GPIOB,4);
   return;
