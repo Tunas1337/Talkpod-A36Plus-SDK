@@ -1,0 +1,6 @@
+*.o
+*.kdhx
+*.bin
+*.elf
+build/
+
