@@ -1,0 +1,5 @@
+cbuild-pack:
+  resolved-packs:
+    - resolved-pack: GigaDevice::GD32F3x0_DFP@3.0.2
+      selected-by-pack:
+        - GigaDevice::GD32F3x0_DFP

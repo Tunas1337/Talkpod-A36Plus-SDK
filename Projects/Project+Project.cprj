@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<cprj schemaVersion="2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="CPRJ.xsd">
+  <created timestamp="2024-06-03T18:55:04" tool="csolution 2.4.0"/>
+
+  <info isLayer="false">
+    <description>Automatically generated project</description>
+  </info>
+
+  <packages>
+    <package name="GD32F3x0_DFP" vendor="GigaDevice" version="3.0.2:3.0.2"/>
+  </packages>
+
+  <compilers>
+    <compiler name="AC6" version="6.19.0:6.19.0"/>
+  </compilers>
+
+  <target Dendian="Little-endian" Dfpu="SP_FPU" Dname="GD32F330CB" Dvendor="GigaDevice:123">
+    <output elf="Project.axf" intdir="tmp/Project/Project" name="Project" outdir="out/Project/Project" rtedir="RTE" type="exe"/>
+    <options debug="on" optimize="size"/>
+    <cflags add="-std=c99 -fno-rtti -funsigned-char -fshort-enums -fshort-wchar -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality" compiler="AC6"/>
+    <cxxflags add="-xc++ -std=c++11 -fno-rtti -funsigned-char -fshort-enums -fshort-wchar -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality" compiler="AC6"/>
+    <ldflags add="--library_type=microlib --map --load_addr_map_info --xref --callgraph --symbols --info sizes --info totals --info unused --info veneers --strict --summary_stderr --info summarysizes" compiler="AC6" file="Project_Project.sct"/>
+    <defines>USE_STDPERIPH_DRIVER;GD32F3X0;GD32F330;__MICROLIB</defines>
+    <includes>../Libraries/GD32/CMSIS/GD/GD32F3x0/Include;../Libraries/GD32/CMSIS;../Users/Inc;../Libraries/GD32/CMSIS/GD/GD32F3x0/Source/ARM;../Libraries/GD32/GD32F3x0_standard_peripheral/Include;.cmsis/include;RTE/_GD32F330;.eide/deps;../Libraries/GD32;../Hardware/Inc;../Drivers/LCD;../Drivers/Flash;../Drivers/BK4819</includes>
+  </target>
+
+  <files>
+    <group name="../USERS/SRC">
+      <file category="sourceC" name="../Users/Src/boot.c"/>
+      <file category="sourceC" name="../Users/Src/gd32f3x0_it.c"/>
+      <file category="sourceC" name="../Users/Src/main.c"/>
+      <file category="sourceC" name="../Users/Src/systick.c"/>
+    </group>
+    <group name="../HARDWARE/SRC">
+      <file category="sourceC" name="../Hardware/Src/dma.c"/>
+      <file category="sourceC" name="../Hardware/Src/gpio.c"/>
+      <file category="sourceC" name="../Hardware/Src/key.c"/>
+      <file category="sourceC" name="../Hardware/Src/spi.c"/>
+      <file category="sourceC" name="../Hardware/Src/usart.c"/>
+    </group>
+    <group name="../LIBRARIES/GD32/GD32F3X0_STANDARD_PERIPHERAL/SOURCE">
+      <file category="sourceC" name="../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_adc.c"/>
+      <file category="sourceC" name="../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_cec.c"/>
+      <file category="sourceC" name="../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_cmp.c"/>
+      <file category="sourceC" name="../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_crc.c"/>
+      <file category="sourceC" name="../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_ctc.c"/>
+      <file category="sourceC" name="../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_dac.c"/>
+      <file category="sourceC" name="../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_dbg.c"/>
+      <file category="sourceC" name="../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_dma.c"/>
+      <file category="sourceC" name="../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_exti.c"/>
+      <file category="sourceC" name="../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_fmc.c"/>
+      <file category="sourceC" name="../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_fwdgt.c"/>
+      <file category="sourceC" name="../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_gpio.c"/>
+      <file category="sourceC" name="../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_i2c.c"/>
+      <file category="sourceC" name="../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_misc.c"/>
+      <file category="sourceC" name="../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_pmu.c"/>
+      <file category="sourceC" name="../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_rcu.c"/>
+      <file category="sourceC" name="../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_rtc.c"/>
+      <file category="sourceC" name="../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_spi.c"/>
+      <file category="sourceC" name="../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_syscfg.c"/>
+      <file category="sourceC" name="../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_timer.c"/>
+      <file category="sourceC" name="../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_tsi.c"/>
+      <file category="sourceC" name="../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_usart.c"/>
+      <file category="sourceC" name="../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_wwdgt.c"/>
+    </group>
+    <group name="../LIBRARIES/GD32/CMSIS/GD/GD32F3X0/SOURCE">
+      <file category="sourceC" name="../Libraries/GD32/CMSIS/GD/GD32F3x0/Source/system_gd32f3x0.c"/>
+    </group>
+    <group name="../LIBRARIES/GD32/CMSIS/GD/GD32F3X0/SOURCE/ARM">
+      <file category="sourceAsm" name="../Libraries/GD32/CMSIS/GD/GD32F3x0/Source/ARM/startup_gd32f3x0.s">
+        <asflags add="-masm=auto" compiler="AC6"/>
+      </file>
+    </group>
+    <group name="../DRIVERS/LCD">
+      <file category="sourceC" name="../Drivers/LCD/st7735s.c"/>
+    </group>
+    <group name="../DRIVERS/FLASH">
+      <file category="sourceC" name="../Drivers/Flash/w25q16jv.c"/>
+    </group>
+    <group name="../DRIVERS/BK4819">
+      <file category="sourceC" name="../Drivers/BK4819/bk4819.c"/>
+    </group>
+  </files>
+</cprj>
+

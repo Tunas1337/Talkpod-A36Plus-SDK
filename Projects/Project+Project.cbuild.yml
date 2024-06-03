@@ -1,0 +1,204 @@
+build:
+  generated-by: csolution version 2.4.0
+  solution: Project.csolution.yml
+  project: Project.cproject.yml
+  context: Project+Project
+  compiler: AC6@6.19.0
+  device: GD32F330CB
+  device-pack: GigaDevice::GD32F3x0_DFP@3.0.2
+  processor:
+    endian: little
+    fpu: sp
+    core: Cortex-M4
+  packs:
+    - pack: GigaDevice::GD32F3x0_DFP@3.0.2
+      path: ${CMSIS_PACK_ROOT}/GigaDevice/GD32F3x0_DFP/3.0.2
+  optimize: size
+  debug: on
+  misc:
+    C:
+      - -std=c99
+      - -fno-rtti
+      - -funsigned-char
+      - -fshort-enums
+      - -fshort-wchar
+      - -ffunction-sections
+      - -Wno-packed
+      - -Wno-missing-variable-declarations
+      - -Wno-missing-prototypes
+      - -Wno-missing-noreturn
+      - -Wno-sign-conversion
+      - -Wno-nonportable-include-path
+      - -Wno-reserved-id-macro
+      - -Wno-unused-macros
+      - -Wno-documentation-unknown-command
+      - -Wno-documentation
+      - -Wno-license-management
+      - -Wno-parentheses-equality
+    CPP:
+      - -xc++
+      - -std=c++11
+      - -fno-rtti
+      - -funsigned-char
+      - -fshort-enums
+      - -fshort-wchar
+      - -ffunction-sections
+      - -Wno-packed
+      - -Wno-missing-variable-declarations
+      - -Wno-missing-prototypes
+      - -Wno-missing-noreturn
+      - -Wno-sign-conversion
+      - -Wno-nonportable-include-path
+      - -Wno-reserved-id-macro
+      - -Wno-unused-macros
+      - -Wno-documentation-unknown-command
+      - -Wno-documentation
+      - -Wno-license-management
+      - -Wno-parentheses-equality
+    Link:
+      - --library_type=microlib
+      - --map
+      - --load_addr_map_info
+      - --xref
+      - --callgraph
+      - --symbols
+      - --info sizes
+      - --info totals
+      - --info unused
+      - --info veneers
+      - --strict
+      - --summary_stderr
+      - --info summarysizes
+  define:
+    - USE_STDPERIPH_DRIVER
+    - GD32F3X0
+    - GD32F330
+    - __MICROLIB
+    - GD32F330
+  define-asm:
+    - GD32F330
+  add-path:
+    - ../Libraries/GD32/CMSIS/GD/GD32F3x0/Include
+    - ../Libraries/GD32/CMSIS
+    - ../Users/Inc
+    - ../Libraries/GD32/CMSIS/GD/GD32F3x0/Source/ARM
+    - ../Libraries/GD32/GD32F3x0_standard_peripheral/Include
+    - .cmsis/include
+    - RTE/_GD32F330
+    - .eide/deps
+    - ../Libraries/GD32
+    - ../Hardware/Inc
+    - ../Drivers/LCD
+    - ../Drivers/Flash
+    - ../Drivers/BK4819
+    - ${CMSIS_PACK_ROOT}/GigaDevice/GD32F3x0_DFP/3.0.2/Device/Include
+  output-dirs:
+    intdir: tmp/Project/Project
+    outdir: out/Project/Project
+    rtedir: RTE
+  output:
+    - type: elf
+      file: Project.axf
+  linker:
+    script: Project_Project.sct
+  groups:
+    - group: ../USERS/SRC
+      files:
+        - file: ../Users/Src/boot.c
+          category: sourceC
+        - file: ../Users/Src/gd32f3x0_it.c
+          category: sourceC
+        - file: ../Users/Src/main.c
+          category: sourceC
+        - file: ../Users/Src/systick.c
+          category: sourceC
+    - group: ../HARDWARE/SRC
+      files:
+        - file: ../Hardware/Src/dma.c
+          category: sourceC
+        - file: ../Hardware/Src/gpio.c
+          category: sourceC
+        - file: ../Hardware/Src/key.c
+          category: sourceC
+        - file: ../Hardware/Src/spi.c
+          category: sourceC
+        - file: ../Hardware/Src/usart.c
+          category: sourceC
+    - group: ../LIBRARIES/GD32/GD32F3X0_STANDARD_PERIPHERAL/SOURCE
+      files:
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_adc.c
+          category: sourceC
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_cec.c
+          category: sourceC
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_cmp.c
+          category: sourceC
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_crc.c
+          category: sourceC
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_ctc.c
+          category: sourceC
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_dac.c
+          category: sourceC
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_dbg.c
+          category: sourceC
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_dma.c
+          category: sourceC
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_exti.c
+          category: sourceC
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_fmc.c
+          category: sourceC
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_fwdgt.c
+          category: sourceC
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_gpio.c
+          category: sourceC
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_i2c.c
+          category: sourceC
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_misc.c
+          category: sourceC
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_pmu.c
+          category: sourceC
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_rcu.c
+          category: sourceC
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_rtc.c
+          category: sourceC
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_spi.c
+          category: sourceC
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_syscfg.c
+          category: sourceC
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_timer.c
+          category: sourceC
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_tsi.c
+          category: sourceC
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_usart.c
+          category: sourceC
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_wwdgt.c
+          category: sourceC
+    - group: ../LIBRARIES/GD32/CMSIS/GD/GD32F3X0/SOURCE
+      files:
+        - file: ../Libraries/GD32/CMSIS/GD/GD32F3x0/Source/system_gd32f3x0.c
+          category: sourceC
+    - group: ../LIBRARIES/GD32/CMSIS/GD/GD32F3X0/SOURCE/ARM
+      files:
+        - file: ../Libraries/GD32/CMSIS/GD/GD32F3x0/Source/ARM/startup_gd32f3x0.s
+          category: sourceAsm
+          misc:
+            ASM:
+              - -masm=auto
+    - group: ../DRIVERS/LCD
+      files:
+        - file: ../Drivers/LCD/st7735s.c
+          category: sourceC
+    - group: ../DRIVERS/FLASH
+      files:
+        - file: ../Drivers/Flash/w25q16jv.c
+          category: sourceC
+    - group: ../DRIVERS/BK4819
+      files:
+        - file: ../Drivers/BK4819/bk4819.c
+          category: sourceC
+  constructed-files:
+    - file: RTE/_Project/RTE_Components.h
+      category: header
+  licenses:
+    - license: <unknown>
+      packs:
+        - pack: GigaDevice::GD32F3x0_DFP@3.0.2

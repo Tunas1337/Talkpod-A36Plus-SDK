@@ -1,0 +1,9 @@
+build-idx:
+  generated-by: csolution version 2.4.0
+  csolution: Project.csolution.yml
+  cprojects:
+    - cproject: Project.cproject.yml
+  cbuilds:
+    - cbuild: Project+Project.cbuild.yml
+      project: Project
+      configuration: +Project

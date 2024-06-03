@@ -7,6 +7,11 @@
         "gd32f3x0_timer.h": "c",
         "gd32f3x0_spi.h": "c",
         "cstddef": "c",
-        "printf.h": "c"
+        "printf.h": "c",
+        "main.h": "c",
+        "dma.h": "c",
+        "gpio.h": "c",
+        "w25q16jv.h": "c",
+        "bk4819.h": "c"
     }
 }

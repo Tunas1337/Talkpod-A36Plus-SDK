@@ -1,0 +1,14 @@
+1 out of 1 target(s) converted
+Created solution: /home/tunas/code/Talkpod-A36Plus-SDK/Projects/Project.csolution.yml
+With projects:
+- /home/tunas/code/Talkpod-A36Plus-SDK/Projects/Project.cproject.yml
+Error: 0 error(s), 2 warning(s):
+Warnings:
+	<Target> "Project" The following user commands should be run manually:
+            After Build/Rebuild
+                fromelf --bin -o "$L@L.bin" "#L"
+
+	Fix compiler version (6.7.0) is configured in the uVision project.
+	However 6.19.0, the earliest version available through vcpkg,
+	is specified in the generated vcpkg-configuration.json and csolution file. 
+Process failed with exit code 1

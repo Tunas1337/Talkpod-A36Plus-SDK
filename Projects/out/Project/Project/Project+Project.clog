@@ -1,0 +1,8 @@
+# CMSIS Build Audit File generated on 2024-06-02T23:26:04
+
+# Project Description File: /home/tunas/code/Talkpod-A36Plus-SDK/Projects/Project+Project.cprj
+
+# Toolchain Configuration File: /home/tunas/code/cmsis-toolbox-linux-amd64/etc/AC6.6.16.2.cmake
+
+# Package: GigaDevice::GD32F3x0_DFP@3.0.2
+  Location: /home/tunas/.cache/arm/packs/GigaDevice/GD32F3x0_DFP/3.0.2/

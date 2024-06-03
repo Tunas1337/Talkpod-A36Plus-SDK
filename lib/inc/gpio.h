@@ -1,25 +1,88 @@
-#ifndef __GPIO_TALKPOD_H__
-#define __GPIO_TALKPOD_H__
+#ifndef __GPIO_JAMIEXU_H__
+#define __GPIO_JAMIEXU_H__
 #include "gd32f3x0.h"
 
-#define GPIO_LCD_PORT GPIOB
-#define GPIO_LCD_CS_PIN GPIO_PIN_2
-#define GPIO_LCD_SDA_PIN GPIO_PIN_15
-#define GPIO_LCD_RST_PIN GPIO_PIN_12
-#define GPIO_LCD_WR_PIN GPIO_PIN_10
-#define GPIO_LCD_SCK_PIN GPIO_PIN_13
-#define GPIO_LCD_LIGHT_PIN GPIO_PIN_7
+// Written by Jamiexu
 
-#define KEY_PORT 
-
-#define GPIO_USART_PORT GPIOA
-#define GPIO_USART_TX_PIN GPIO_PIN_9
-#define GPIO_USART_RX_PIN GPIO_PIN_10
+// LCD
+#define LCD_GPIO_PORT GPIOB
+#define LCD_GPIO_CS_PIN GPIO_PIN_2
+#define LCD_GPIO_SDA_PIN GPIO_PIN_15
+#define LCD_GPIO_RST_PIN GPIO_PIN_12
+#define LCD_GPIO_WR_PIN GPIO_PIN_10
+#define LCD_GPIO_SCK_PIN GPIO_PIN_13
+#define LCD_GPIO_LIGHT_PIN GPIO_PIN_7
+#define LCD_GPIO_RCU RCU_GPIOB
 
 
-static void LCD_init(void);
-static void key_init(void);
-static void usart_init(void);
+// FLASH
+#define FLASH_GPIO_PORT GPIOA
+#define FLASH_GPIO_CS_PIN GPIO_PIN_4
+#define FLASH_GPIO_SCK_PIN GPIO_PIN_5
+#define FLASH_GPIO_DIN_PIN GPIO_PIN_7
+#define FLASH_GPIO_DOUT_PIN GPIO_PIN_6
+#define FLASH_GPIO_RCU RCU_GPIOA
+
+
+// BATTERY
+#define BATTERY_GPIO_PORT GPIOA
+#define BATTERY_GPIO_PIN GPIO_PIN_1
+#define BATTERY_GPIO_RCU RCU_GPIOA
+
+
+// BK4819
+#define BK4819_GPIO_PORT GPIOA
+#define BK4819_GPIO_SCK_PIN GPIO_PIN_2
+#define BK4819_GPIO_SDA_PIN GPIO_PIN_3
+#define BK4819_GPIO_SCN_PORT GPIOC
+#define BK4819_GPIO_SCN_PIN GPIO_PIN_13
+#define BK4819_GPIO_RCU RCU_GPIOA
+#define BK4819_GPIO_SCN_RCU RCU_GPIOC
+
+
+// BK1080
+#define BK1080_GPIO_PORT GPIOF
+#define BK1080_GPIO_SCK_PIN GPIO_PIN_6
+#define BK1080_GPIO_SDA_PORT GPIOA
+#define BK1080_GPIO_SDA_PIN GPIO_PIN_3
+#define BK1080_GPIO_RCU RCU_GPIOF
+#define BK1080_GPIO_SDA_RCU RCU_GPIOA
+
+
+// KEY
+#define KEY_GPIO_PTT_PORT GPIOA
+#define KEY_GPIO_PITT_PIN GPIO_PIN_10
+#define KEY_GPIO_PTT_RCU RCU_GPIOA
+
+#define KEY_GPIO_ROW_PORT GPIOB
+#define KEY_GPIO_ROW0_PIN GPIO_PIN_3
+#define KEY_GPIO_ROW1_PIN GPIO_PIN_4
+#define KEY_GPIO_ROW2_PIN GPIO_PIN_5
+#define KEY_GPIO_ROW3_PIN GPIO_PIN_6
+#define KEY_GPIO_ROW_RCU RCU_GPIOB
+
+#define KEY_GPIO_ROW_PORT GPIOB
+#define KEY_GPIO_COL0_PIN GPIO_PIN_11
+#define KEY_GPIO_COL1_PIN GPIO_PIN_9
+#define KEY_GPIO_COL2_PIN GPIO_PIN_14
+#define KEY_GPIO_COL3_PIN GPIO_PIN_8
+#define KEY_GPIO_COL_RCU RCU_GPIOB
+
+
+// USART
+#define USART_GPIO_PORT GPIOA
+#define USART_GPIO_TX_PIN GPIO_PIN_9
+#define USART_GPIO_RX_PIN GPIO_PIN_10
+#define USART_GPIO_RCU RCU_GPIOA
+
+
+
+static void LCD_gpio_init(void);
+static void key_gpio_init(void);
+static void usart_gpio_init(void);
+static void eeprom_gpio_init(void);
+static void bk4819_gpio_init(void);
+static void bk1080_gpio_init(void);
 
 void gpio_config(void);
 

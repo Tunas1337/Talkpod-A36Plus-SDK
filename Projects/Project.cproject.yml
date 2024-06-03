@@ -1,0 +1,124 @@
+project:
+  packs:
+    - pack: GigaDevice::GD32F3x0_DFP
+  setups:
+    - setup: Options for Project
+      processor:
+        fpu: sp
+      add-path:
+        - ../Libraries/GD32/CMSIS/GD/GD32F3x0/Include
+        - ../Libraries/GD32/CMSIS
+        - ../Users/Inc
+        - ../Libraries/GD32/CMSIS/GD/GD32F3x0/Source/ARM
+        - ../Libraries/GD32/GD32F3x0_standard_peripheral/Include
+        - .cmsis/include
+        - RTE/_GD32F330
+        - .eide/deps
+        - ../Libraries/GD32
+        - ../Hardware/Inc
+        - ../Drivers/LCD
+        - ../Drivers/Flash
+        - ../Drivers/BK4819
+      debug: "on"
+      define:
+        - USE_STDPERIPH_DRIVER
+        - GD32F3X0
+        - GD32F330
+        - __MICROLIB
+      misc:
+        - C:
+            - -std=c99
+          C-CPP:
+            - -fno-rtti
+            - -funsigned-char
+            - -fshort-enums
+            - -fshort-wchar
+            - -ffunction-sections
+            - -Wno-packed
+            - -Wno-missing-variable-declarations
+            - -Wno-missing-prototypes
+            - -Wno-missing-noreturn
+            - -Wno-sign-conversion
+            - -Wno-nonportable-include-path
+            - -Wno-reserved-id-macro
+            - -Wno-unused-macros
+            - -Wno-documentation-unknown-command
+            - -Wno-documentation
+            - -Wno-license-management
+            - -Wno-parentheses-equality
+          CPP:
+            - -xc++
+            - -std=c++11
+          Link:
+            - --library_type=microlib
+            - --map
+            - --load_addr_map_info
+            - --xref
+            - --callgraph
+            - --symbols
+            - --info sizes
+            - --info totals
+            - --info unused
+            - --info veneers
+            - --strict
+            - --summary_stderr
+            - --info summarysizes
+  linker:
+    - script: Project_Project.sct
+  groups:
+    - group: ../USERS/SRC
+      files:
+        - file: ../Users/Src/boot.c
+        - file: ../Users/Src/gd32f3x0_it.c
+        - file: ../Users/Src/main.c
+        - file: ../Users/Src/systick.c
+    - group: ../HARDWARE/SRC
+      files:
+        - file: ../Hardware/Src/dma.c
+        - file: ../Hardware/Src/gpio.c
+        - file: ../Hardware/Src/key.c
+        - file: ../Hardware/Src/spi.c
+        - file: ../Hardware/Src/usart.c
+    - group: ../LIBRARIES/GD32/GD32F3X0_STANDARD_PERIPHERAL/SOURCE
+      files:
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_adc.c
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_cec.c
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_cmp.c
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_crc.c
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_ctc.c
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_dac.c
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_dbg.c
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_dma.c
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_exti.c
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_fmc.c
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_fwdgt.c
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_gpio.c
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_i2c.c
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_misc.c
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_pmu.c
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_rcu.c
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_rtc.c
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_spi.c
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_syscfg.c
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_timer.c
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_tsi.c
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_usart.c
+        - file: ../Libraries/GD32/GD32F3x0_standard_peripheral/Source/gd32f3x0_wwdgt.c
+    - group: ../LIBRARIES/GD32/CMSIS/GD/GD32F3X0/SOURCE
+      files:
+        - file: ../Libraries/GD32/CMSIS/GD/GD32F3x0/Source/system_gd32f3x0.c
+    - group: ../LIBRARIES/GD32/CMSIS/GD/GD32F3X0/SOURCE/ARM
+      files:
+        - file: ../Libraries/GD32/CMSIS/GD/GD32F3x0/Source/ARM/startup_gd32f3x0.s
+          misc:
+            - ASM:
+                - -masm=auto
+    - group: ../DRIVERS/LCD
+      files:
+        - file: ../Drivers/LCD/st7735s.c
+    - group: ../DRIVERS/FLASH
+      files:
+        - file: ../Drivers/Flash/w25q16jv.c
+    - group: ../DRIVERS/BK4819
+      files:
+        - file: ../Drivers/BK4819/bk4819.c

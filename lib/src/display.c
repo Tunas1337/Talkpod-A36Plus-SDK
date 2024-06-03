@@ -123,13 +123,13 @@ void SPI_SendCommand(ST7735S_Command_t param_1)
   gpio_bit_reset(GPIOB,0b0000010000000000);
   do {
                     /* check if transmit buffer empty */
-	uVar1 = check_spi_status_reg(SPI1, 0x2);
+	uVar1 = check_spi_status_reg((uint32_t *)SPI1, 0x2);
   } while (uVar1 == 0);
   // Set SPI data register
-  set_spi_data_register(SPI1, param_1);
+  set_spi_data_register((uint32_t *)SPI1, param_1);
   do {
 	// Check if SPI status register is empty
-	uVar1 = check_spi_status_reg(SPI1, 0x2);
+	uVar1 = check_spi_status_reg((uint32_t *)SPI1, 0x2);
   } while (uVar1 == 0);
   gpio_bit_set(GPIOB,4);
   return;
@@ -143,13 +143,13 @@ void SPI_SendByte(uint8_t data)
   gpio_bit_set(GPIOB,0b0000010000000000);
   do {
                     /* check if transmit buffer empty */
-	uVar1 = check_spi_status_reg(SPI1, 0x2);
+	uVar1 = check_spi_status_reg((uint32_t *)SPI1, 0x2);
   } while (uVar1 == 0);
   // Set SPI data register
-  set_spi_data_register(SPI1, data);
+  set_spi_data_register((uint32_t *)SPI1, data);
   do {
 	// Check if SPI status register is empty
-	uVar1 = check_spi_status_reg(SPI1, 0x2);
+	uVar1 = check_spi_status_reg((uint32_t *)SPI1, 0x2);
   } while (uVar1 == 0);
   gpio_bit_set(GPIOB,4);
   return;

@@ -27,6 +27,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include <stdint.h>
+#include "systick.h"
 
 extern uint32_t _sdata, _edata, _rdata, _sbss, _ebss, _estack;
 
@@ -46,6 +47,7 @@ void Reset_Handler(void)
 
 void Null_Handler(void) {return;}
 void Loop_Handler(void) {while(1);}
+void SysTick_Handler(void) {delay_decrement();}
 
 //Dummy interrupt handlers
 void __attribute__((weak, alias ("Null_Handler"))) NMI_Handler(void);
@@ -56,7 +58,7 @@ void __attribute__((weak, alias ("Loop_Handler"))) UsageFault_Handler(void);
 void __attribute__((weak, alias ("Null_Handler"))) SVC_Handler(void);
 void __attribute__((weak, alias ("Null_Handler"))) DebugMon_Handler(void);
 void __attribute__((weak, alias ("Null_Handler"))) PendSV_Handler(void);
-void __attribute__((weak, alias ("Null_Handler"))) SysTick_Handler(void);
+//void __attribute__((weak, alias ("Null_Handler"))) SysTick_Handler(void);
 void __attribute__((weak, alias ("Null_Handler"))) WWDGT_IRQHandler(void);
 void __attribute__((weak, alias ("Null_Handler"))) LVD_IRQHandler(void); 
 void __attribute__((weak, alias ("Null_Handler"))) RTC_IRQHandler(void); 
